@@ -1,5 +1,6 @@
 import express from 'express'
 import { getAllLessons, getLessonById, createLesson, updateLesson, deleteLesson } from '../Controllers/lessonController.js'
+import {authenticateToken,isAdmin} from '../Middlewares/adminMiddleware.js'
 
 export const lessonRoutes = express.Router();
 

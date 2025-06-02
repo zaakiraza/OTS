@@ -1,5 +1,6 @@
 import express from 'express'
 import { getAllChapters, getChapterById, deleteChapter, updateChapter, createChapter } from '../Controllers/chapterController.js'
+import {authenticateToken,isAdmin} from '../Middlewares/adminMiddleware.js'
 
 export const chapterRoutes = express.Router();
 

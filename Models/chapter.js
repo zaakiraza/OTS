@@ -8,7 +8,7 @@ const chapterSchema = new mongoose.Schema({
     subjectId: {
         type: Number,
         require: true,
-        author: { type: Schema.Types.ObjectId, ref: 'subjects' }
+        ref: 'subjectSchema',
     },
     description: {
         type: String,

@@ -5,10 +5,10 @@ const lessonSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    subjectId: {
+    chapterId: {
         type: Number,
         require: true,
-        author: { type: Schema.Types.ObjectId, ref: 'subjects' }
+        ref: 'chapterSchema',
     },
     description: {
         type: String,

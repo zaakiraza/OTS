@@ -5,10 +5,10 @@ const subCategorySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    categoryId:{
+    categoryId: {
         type: Number,
         required: true,
-        author: { type: Schema.Types.ObjectId, ref: 'categorySchema' }
+        ref: 'categorySchema',
     },
 }, { timestamps: true })
 

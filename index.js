@@ -1,8 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import {connectDB} from './utils/DB.js'
-import {apiRoutes} from './Routes/routes.js'
+import { connectDB } from './utils/DB.js'
+import { apiRoutes } from './Routes/routes.js'
+import { userRoutes } from './Routes/users.js'
+
 dotenv.config();
 
 const app = express()
@@ -12,8 +14,10 @@ app.use(express.json());
 connectDB();
 
 app.use("/api", apiRoutes);
-app.use("/users", users);
-
+app.use("/users", userRoutes);
+app.use("/", (req, res) => {
+    res.send("Welcome");
+})
 
 app.listen(process.env.PORT, () => {
     console.log("server start");

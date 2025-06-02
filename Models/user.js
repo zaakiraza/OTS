@@ -20,13 +20,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    isAdmin: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
     // Need to create seperate user roles table in future
     roleId: {
-        type: DataTypes.INTEGER,
+        type: Number,
         required: false,
     },
     dob: {
-        type: DataTypes.DATE,
+        type: Date,
         required: false,
     },
     gender: {
@@ -58,11 +63,11 @@ const userSchema = new mongoose.Schema({
         required: false,
     },
     resetCodeExpiresAt: {
-        type: DataTypes.DATE,
+        type: Date,
         required: false,
     },
     emailVerified: {
-        type: DataTypes.BOOLEAN,
+        type: Boolean,
         required: true,
         default: false
     },

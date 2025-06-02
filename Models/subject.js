@@ -8,12 +8,12 @@ const subjectSchema = new mongoose.Schema({
     subcategoryId: {
         type: Number,
         required: true,
-        author: { type: Schema.Types.ObjectId, ref: 'subCategorySchema' },
+        ref: 'subCategorySchema',
     },
     instructorId: {
         type: Number,
         required: false,
-        author: { type: Schema.Types.ObjectId, ref: 'userSchema' },
+        ref: 'userSchema',
     },
     description: {
         type: String,
@@ -24,7 +24,7 @@ const subjectSchema = new mongoose.Schema({
         required: false,
     },
     rating: {
-        type: Float,
+        type: Number,
         required: false,
         default: 0,
     },
