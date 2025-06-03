@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+
+// academics and skill
 const categorySchema = new mongoose.Schema({
     name: {
         type: String,
@@ -13,4 +15,4 @@ const categorySchema = new mongoose.Schema({
 }, { timestamps: true })
 
 
-export default mongoose.model('categorySchema', categorySchema);
+export default mongoose.model('category', categorySchema);

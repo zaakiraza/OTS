@@ -1,5 +1,5 @@
-import { successHandler, errorHandler } from '../utils/responseHandler.js'
-import lesson from '../Models/lesson.js'
+import { successHandler, errorHandler } from '../../utils/responseHandler.js'
+import lesson from '../../Models/lesson.js'
 
 export const getAllLessons = async (req, res) => {
     try {
@@ -35,25 +35,25 @@ export const getLessonById = async (req, res) => {
 }
 
 
-export const createLesson = async (req, res) => {
+export const    createLesson = async (req, res) => {
     const { lessonTitle, chapterId, description, duration, imageUrl } = req.body
 
-    if (!lessonTitle || !chapterId || !duration || !imageUrl) {
+    if (!lessonTitle || !chapterId || !duration) {
         return errorHandler(res, 400, "Missing Fields")
     }
 
     try {
         await lesson.create({
-            title: categoryName,
+            title: lessonTitle,
             chapterId: chapterId,
             description: description || "",
             duration: duration,
-            imageUrl: imageUrl
+            imageUrl: imageUrl || ""
         })
 
         return successHandler(res, 200, "lesson is Created Successfully")
     }
-    catch (error) {
+    catch (e) {
         return errorHandler(res, 400, e.message);
     }
 }
@@ -103,7 +103,7 @@ export const deleteLesson = async (req, res) => {
         await lesson.findByIdAndDelete({ _id: lessonId })
         return successHandler(res, 200, "Deleted Lesson Successfully")
     }
-    catch (error) {
-        return errorHandler(res, 400, error.message)
+    catch (e) {
+        return errorHandler(res, 400, e.message)
     }
 }

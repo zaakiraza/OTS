@@ -1,5 +1,5 @@
-import { successHandler, errorHandler } from '../utils/responseHandler.js'
-import chapter from '../Models/chapter.js'
+import { successHandler, errorHandler } from '../../utils/responseHandler.js'
+import chapter from '../../Models/chapter.js'
 
 export const getAllChapters = async (req, res) => {
     try {
@@ -37,7 +37,7 @@ export const getChapterById = async (req, res) => {
 
 export const createChapter = async (req, res) => {
     const { chapterTitle, subjectId, description, duration, imageUrl } = req.body
-    if (!chapterTitle || !subjectId || !duration || !imageUrl) {
+    if (!chapterTitle || !subjectId || !duration) {
         return errorHandler(res, 404, "Feilds are missing");
     }
 
@@ -47,12 +47,12 @@ export const createChapter = async (req, res) => {
             subjectId: subjectId,
             description: description || "",
             duration: duration,
-            imageUrl: imageUrl
+            imageUrl: imageUrl || ""
         })
 
         return successHandler(res, 200, "Chapter is Created Successfully")
     }
-    catch (error) {
+    catch (e) {
         return errorHandler(res, 400, e.message);
     }
 }

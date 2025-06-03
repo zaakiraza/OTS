@@ -1,5 +1,5 @@
-import { successHandler, errorHandler } from '../utils/responseHandler.js'
-import category from '../Models/category.js'
+import { successHandler, errorHandler } from '../../utils/responseHandler.js'
+import category from '../../Models/category.js'
 
 export const getAllCategories = async (req, res) => {
     try {

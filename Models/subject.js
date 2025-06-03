@@ -1,19 +1,21 @@
 import mongoose from "mongoose";
 
+
+// english, urdu
 const subjectSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
     subcategoryId: {
-        type: Number,
+        type: String,
         required: true,
-        ref: 'subCategorySchema',
+        ref: 'subCategory',
     },
     instructorId: {
-        type: Number,
+        type: String,
         required: false,
-        ref: 'userSchema',
+        ref: 'user',
     },
     description: {
         type: String,
@@ -31,4 +33,4 @@ const subjectSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 
-export default mongoose.model('subjectSchema', subjectSchema);
+export default mongoose.model('subject', subjectSchema);

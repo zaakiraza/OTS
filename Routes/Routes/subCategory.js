@@ -1,6 +1,6 @@
 import express from 'express'
-import { getAllSubCategories, getSubCategoryById, createSubCategory, updateSubCategory, deleteSubCategory } from '../Controllers/subCategoryController.js'
-import {authenticateToken,isAdmin} from '../Middlewares/adminMiddleware.js'
+import { getAllSubCategories, getSubCategoryById, createSubCategory, updateSubCategory, deleteSubCategory } from '../../Controllers/apiControlller/subCategoryController.js'
+import { authenticateToken, isAdmin } from '../../Middlewares/adminMiddleware.js'
 
 export const subCategoryRoutes = express.Router();
 

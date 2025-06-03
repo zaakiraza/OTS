@@ -6,23 +6,23 @@ const lessonSchema = new mongoose.Schema({
         required: true
     },
     chapterId: {
-        type: Number,
+        type: String,
         require: true,
-        ref: 'chapterSchema',
+        ref: 'chapter',
     },
     description: {
         type: String,
         require: false,
     },
     duration: {
-        type: Number,
+        type: String,
         required: true,
     },
     imageUrl: {
         type: String,
-        required: true,
+        required: false,
     },
 }, { timestamps: true })
 
 
-export default mongoose.model('lessonSchema', lessonSchema);
+export default mongoose.model('lesson', lessonSchema);

@@ -2,8 +2,9 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import { connectDB } from './utils/DB.js'
-import { apiRoutes } from './Routes/routes.js'
-import { userRoutes } from './Routes/users.js'
+import { apiRoutes } from './Routes/Routes/routes.js'
+import { userRoutes } from './Routes/Users/users.js'
+import { authRoutes } from './Routes/Auth/auth.js'
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ connectDB();
 
 app.use("/api", apiRoutes);
 app.use("/users", userRoutes);
+app.use("/auth", authRoutes)
 app.use("/", (req, res) => {
     res.send("Welcome");
 })

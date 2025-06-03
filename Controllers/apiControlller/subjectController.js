@@ -1,5 +1,5 @@
-import { successHandler, errorHandler } from '../utils/responseHandler.js'
-import subject from '../Models/subject.js'
+import { successHandler, errorHandler } from '../../utils/responseHandler.js'
+import subject from '../../Models/subject.js'
 
 export const getAllSubjects = async (req, res) => {
     try {
@@ -13,7 +13,6 @@ export const getAllSubjects = async (req, res) => {
         let skip = (page - 1) * limitOfRecords
         const countNumbers = await subject.countDocuments()
         const allSubjects = await subject.find().limit(limitOfRecords).skip(skip).sort({ createdAt: -1 });
-
 
         successHandler(res, 200, "All Subjects get successfully", allSubjects, limit)
     }
@@ -38,23 +37,23 @@ export const getSubjectById = async (req, res) => {
 export const createSubject = async (req, res) => {
     const { subjectName, subcategoryId, instructorId, description, imageUrl, rating } = req.body
 
-    if (!subjectName || !subcategoryId) {
+    if (!subjectName || !subcategoryId || !instructorId) {
         return errorHandler(res, 400, "Missing Fields")
     }
 
     try {
         await subject.create({
-            name: categoryName,
+            name: subjectName,
             subcategoryId: subcategoryId,
             instructorId: instructorId,
-            description: description,
-            imageUrl: imageUrl,
-            rating: rating,
+            description: description || "",
+            imageUrl: imageUrl || "",
+            rating: rating || 0,
         })
 
         return successHandler(res, 200, "Subject is Created Successfully")
     }
-    catch (error) {
+    catch (e) {
         return errorHandler(res, 400, e.message);
     }
 }
@@ -71,7 +70,7 @@ export const updateSubject = async (req, res) => {
             { _id: requestedSubject },
             {
                 $set: {
-                    name: categoryName,
+                    name: subjectName,
                     subcategoryId: subcategoryId,
                     instructorId: instructorId,
                     description: description,

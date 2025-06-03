@@ -6,23 +6,23 @@ const chapterSchema = new mongoose.Schema({
         required: true
     },
     subjectId: {
-        type: Number,
+        type: String,
         require: true,
-        ref: 'subjectSchema',
+        ref: 'subject',
     },
     description: {
         type: String,
         require: false,
     },
     duration: {
-        type: Number,
+        type: String,
         required: true,
     },
     imageUrl: {
         type: String,
-        required: true,
+        required: false,
     },
 }, { timestamps: true })
 
 
-export default mongoose.model('chapterSchema', chapterSchema);
+export default mongoose.model('chapter', chapterSchema);

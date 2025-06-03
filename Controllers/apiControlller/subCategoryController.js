@@ -1,5 +1,5 @@
-import { successHandler, errorHandler } from '../utils/responseHandler.js';
-import subCategory from '../Models/subCategory.js'
+import { successHandler, errorHandler } from '../../utils/responseHandler.js';
+import subCategory from '../../Models/subCategory.js'
 
 export const getAllSubCategories = async (req, res) => {
     try {

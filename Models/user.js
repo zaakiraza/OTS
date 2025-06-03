@@ -1,11 +1,16 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    username: {
+    firstName: {
         type: String,
-        required: false,
+    },
+    lastName: {
+        type: String,
+    },
+    userName: {
+        type: String,
+        required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -22,7 +27,6 @@ const userSchema = new mongoose.Schema({
     },
     isAdmin: {
         type: Boolean,
-        required: true,
         default: false,
     },
     // Need to create seperate user roles table in future
@@ -68,10 +72,9 @@ const userSchema = new mongoose.Schema({
     },
     emailVerified: {
         type: Boolean,
-        required: true,
         default: false
     },
 }, { timestamps: true })
 
 
-export default mongoose.model('userSchema', userSchema);
+export default mongoose.model('user', userSchema);
