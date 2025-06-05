@@ -4,4 +4,5 @@ import { authenticateToken, isAdmin } from '../../Middlewares/adminMiddleware.js
 
 export const mailRoutes = express.Router();
 
-mailRoutes.post('/subscribe', authenticateToken, isAdmin, sendMail);
+// mailRoutes.post('/subscribe', authenticateToken, isAdmin, sendMail);
+mailRoutes.post('/subscribe', sendMail);
